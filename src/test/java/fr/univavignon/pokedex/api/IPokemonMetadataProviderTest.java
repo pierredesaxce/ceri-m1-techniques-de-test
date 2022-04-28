@@ -1,7 +1,8 @@
 package fr.univavignon.pokedex.api;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -13,7 +14,7 @@ class IPokemonMetadataProviderTest {
     private PokemonMetadata pokeMetadataBulbizarre;
     private PokemonMetadata pokeMetadataAquali;
 
-    @BeforeEach
+    @Before
     public void setup(){
 
         mockMetadataProvider = mock(IPokemonMetadataProvider.class);
@@ -33,7 +34,7 @@ class IPokemonMetadataProviderTest {
 
 
     @Test
-    void whenIndex133shouldReturnIndex133() {
+    public void whenIndex133shouldReturnIndex133() {
 
         try {
 
@@ -46,7 +47,7 @@ class IPokemonMetadataProviderTest {
     }
 
     @Test
-    void whenIndex133shouldReturnNameAquali() {
+    public void whenIndex133shouldReturnNameAquali() {
 
         try {
 
@@ -59,7 +60,7 @@ class IPokemonMetadataProviderTest {
     }
 
     @Test
-    void whenIndex133shouldReturnAttack186() {
+    public void whenIndex133shouldReturnAttack186() {
 
         try {
 
@@ -72,7 +73,7 @@ class IPokemonMetadataProviderTest {
     }
 
     @Test
-    void whenIndex133shouldReturnDefense186() {
+    public void whenIndex133shouldReturnDefense186() {
 
         try {
 
@@ -85,7 +86,7 @@ class IPokemonMetadataProviderTest {
     }
 
     @Test
-    void whenIndex133shouldReturnStamina260() {
+    public void whenIndex133shouldReturnStamina260() {
 
         try {
 
@@ -98,7 +99,7 @@ class IPokemonMetadataProviderTest {
     }
 
     @Test
-    void whenIndex0shouldReturnIndex0() {
+    public void whenIndex0shouldReturnIndex0() {
 
         try {
 
@@ -111,7 +112,7 @@ class IPokemonMetadataProviderTest {
     }
 
     @Test
-    void whenIndex0shouldReturnNameBulbizarre() {
+    public void whenIndex0shouldReturnNameBulbizarre() {
 
         try {
 
@@ -124,7 +125,7 @@ class IPokemonMetadataProviderTest {
     }
 
     @Test
-    void whenIndex0shouldReturnAttack126() {
+    public void whenIndex0shouldReturnAttack126() {
 
         try {
 
@@ -137,7 +138,7 @@ class IPokemonMetadataProviderTest {
     }
 
     @Test
-    void whenIndex0shouldReturnDefense126() {
+    public void whenIndex0shouldReturnDefense126() {
 
         try {
 
@@ -150,7 +151,7 @@ class IPokemonMetadataProviderTest {
     }
 
     @Test
-    void whenIndex0shouldReturnStamina90() {
+    public void whenIndex0shouldReturnStamina90() {
 
         try {
 
