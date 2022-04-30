@@ -13,8 +13,6 @@ public class IPokedexFactoryTest {
     IPokemonMetadataProvider pokemonFactMock;
     IPokemonFactory metadataProvMock;
     IPokedex pokedexMock;
-    Pokemon pokeBulbizarre;
-    Pokemon pokeAquali;
 
     @Before
     public void setup(){
@@ -24,9 +22,6 @@ public class IPokedexFactoryTest {
         pokemonFactMock = mock(IPokemonMetadataProvider.class);
         metadataProvMock = mock(IPokemonFactory.class);
         pokedexMock = mock(IPokedex.class);
-
-        pokeBulbizarre = new Pokemon(0,"Bulbizarre",126,126, 90,613,64,4000,4,56);
-        pokeAquali = new Pokemon(133,"Aquali",186,186,260,2729,202,5000,4,100);
 
         when(pokedexFactMock.createPokedex(pokemonFactMock,metadataProvMock)).thenReturn(pokedexMock);
 
