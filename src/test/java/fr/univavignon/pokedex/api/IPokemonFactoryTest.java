@@ -98,4 +98,18 @@ public class IPokemonFactoryTest {
 
     }
 
+    @Test
+    public void whenIndex133shouldReturnIv100() {
+
+        assertEquals(pokeFactory.createPokemon(133,2729,202,5000,4).getIv(), pokeAquali.getIv(), pokeAquali.getIv());
+
+    }
+
+    @Test
+    public void whenIndex0shouldReturnIv56() {
+
+        assertEquals(pokeFactory.createPokemon(133,2729,202,5000,4).getIv(), pokeBulbizarre.getIv(), pokeBulbizarre.getIv());
+
+    }
+
 }

@@ -26,6 +26,7 @@ public class IPokemonMetadataProviderTest {
 
             when(mockMetadataProvider.getPokemonMetadata(0)).thenReturn(pokeMetadataBulbizarre);
             when(mockMetadataProvider.getPokemonMetadata(133)).thenReturn(pokeMetadataAquali);
+            when(mockMetadataProvider.getPokemonMetadata(-1)).thenThrow(new PokedexException("Pokemon Totsugeki"));
 
         } catch (PokedexException e) {
             e.printStackTrace();
@@ -160,6 +161,13 @@ public class IPokemonMetadataProviderTest {
         } catch (PokedexException e) {
             e.printStackTrace();
         }
+
+    }
+
+    @Test(expected = PokedexException.class)
+    public void whenIndexMinus1ShouldRaisePokedexException() throws PokedexException {
+
+            mockMetadataProvider.getPokemonMetadata(-1);
 
     }
 
