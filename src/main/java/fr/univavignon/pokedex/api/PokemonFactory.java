@@ -29,11 +29,13 @@ public class PokemonFactory implements IPokemonFactory{
 
         assert tempMetadata != null;
         Random rand = new Random();
-        int attackRandomValue = rand.nextInt(0,15);
-        int defenseRandomValue = rand.nextInt(0,15);
-        int staminaRandomValue = rand.nextInt(0,15);
+        int attackRandomValue = rand.nextInt(16)-1;
+        int defenseRandomValue = rand.nextInt(16)-1;
+        int staminaRandomValue = rand.nextInt(16)-1;
 
-        genPokemon =  new Pokemon(index,tempMetadata.getName(),tempMetadata.getAttack()+attackRandomValue,tempMetadata.getDefense()+defenseRandomValue,tempMetadata.getStamina()+staminaRandomValue, cp, hp, dust, candy, (attackRandomValue+defenseRandomValue+staminaRandomValue)/45*100);
+        double ivCalc = (attackRandomValue+defenseRandomValue+staminaRandomValue)/45*100;
+
+        genPokemon =  new Pokemon(index,tempMetadata.getName(),tempMetadata.getAttack()+attackRandomValue,tempMetadata.getDefense()+defenseRandomValue,tempMetadata.getStamina()+staminaRandomValue, cp, hp, dust, candy, ivCalc);
 
         return genPokemon;
     }
