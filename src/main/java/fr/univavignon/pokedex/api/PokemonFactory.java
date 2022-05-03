@@ -8,10 +8,17 @@ import java.util.Random;
 
 public class PokemonFactory implements IPokemonFactory{
 
+    PokemonMetadataProvider tempMetadataProvider;
+
+    public PokemonFactory(PokemonMetadataProvider tempMetadataProvider){
+
+        this.tempMetadataProvider = tempMetadataProvider;
+
+    }
 
     @Override
     public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
-        PokemonMetadataProvider tempMetadataProvider = new PokemonMetadataProvider();
+
         PokemonMetadata tempMetadata = null;
         try {
             tempMetadata = tempMetadataProvider.getPokemonMetadata(index);
