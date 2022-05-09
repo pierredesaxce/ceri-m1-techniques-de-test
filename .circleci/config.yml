@@ -29,30 +29,30 @@ jobs:
           name: Test
           command: mvn test
       - codecov/upload
-
-generate-javadoc:
-    docker:
-      - image: cimg/base:2021.04
-    steps:
-      # Checkout the code as the first step.
-      - checkout
-      # Use mvn clean and package as the standard maven build phase
-      - run:
-          name: install1
-          command: sudo add-apt-repository ppa:openjdk-r/ppa
-      - run:
-          name: install2
-          command: sudo apt-get update
-      - run:
-          name: install3
-          command: sudo apt-get install openjdk-11-jdk-headless -y
-      - run:
-          name: Build-docs 
-          command: javadoc src/main/java/fr/univavignon/pokedex/api/* -d docs #/src\main\java\fr\univavignon\pokedex\api
-      - persist_to_workspace:
-          root: .
-          paths: docs
       
+  docs-deploy:
+    docker:
+      - image: node:8.10.0
+    steps:
+      - checkout
+      - attach_workspace:
+          at: docs/_build
+      - run:
+          name: Disable jekyll builds
+          command: touch docs/_build/html/.nojekyll
+      - run:
+          name: Install and configure dependencies
+          command: |
+            npm install -g --silent gh-pages@2.0.1
+            git config user.email "ci-build@klukas.net"
+            git config user.name "ci-build"
+      - add_ssh_keys:
+          fingerprints:
+            - "	f9:86:0c:d0:97:d9:cc:3a:64:bc:78:30:67:5d:74:b5"
+      - run:
+          name: Deploy docs to gh-pages branch
+          command: gh-pages --dist docs
+
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
@@ -60,3 +60,6 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test
+      - docs-deploy:
+          requires:
+            - build-and-test
