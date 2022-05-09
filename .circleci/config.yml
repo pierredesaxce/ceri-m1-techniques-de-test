@@ -29,6 +29,16 @@ jobs:
           name: Test
           command: mvn test
       - codecov/upload
+
+  build:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: |
+          cd test
+          ./test_add_javadoc.sh
+      
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
