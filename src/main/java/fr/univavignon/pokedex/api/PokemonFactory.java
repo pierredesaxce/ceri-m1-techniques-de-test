@@ -17,14 +17,9 @@ public class PokemonFactory implements IPokemonFactory{
     }
 
     @Override
-    public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
+    public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) throws PokedexException {
 
-        PokemonMetadata tempMetadata = null;
-        try {
-            tempMetadata = tempMetadataProvider.getPokemonMetadata(index);
-        } catch (PokedexException e) {
-            e.printStackTrace();
-        }
+        PokemonMetadata tempMetadata = tempMetadataProvider.getPokemonMetadata(index);
         Pokemon genPokemon;
 
         assert tempMetadata != null;
